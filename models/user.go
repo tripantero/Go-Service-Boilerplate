@@ -22,6 +22,8 @@ func InsertUser(name string, age int) error {
 	user := &User{Name: name, Age: age}
 	return Create(user)
 }
+
+// FindAllUsers return user list from database
 func FindAllUsers() (*[]User, error) {
 	users := []User{}
 	cursor, err := mgm.Coll(collStruct).Find(mgm.Ctx(), bson.M{})

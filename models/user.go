@@ -1,8 +1,6 @@
 package models
 
 import (
-	"fmt"
-
 	"github.com/Kamva/mgm/v3"
 	"go.mongodb.org/mongo-driver/bson"
 )
@@ -24,7 +22,7 @@ func InsertUser(name string, age int) error {
 	user := &User{Name: name, Age: age}
 	return Create(user)
 }
-func FindAllUsers() *[]User, error {
+func FindAllUsers() (*[]User, error) {
 	users := []User{}
 	cursor, err := mgm.Coll(collStruct).Find(mgm.Ctx(), bson.M{})
 	cursor.All(mgm.Ctx(), &users)

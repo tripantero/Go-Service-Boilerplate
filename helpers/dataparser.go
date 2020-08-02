@@ -1,6 +1,8 @@
 package helpers
 
 import (
+	"io"
+
 	jsoniter "github.com/json-iterator/go"
 )
 
@@ -14,4 +16,9 @@ var (
 func ByteToStruct(bytes []byte, reference interface{}) error {
 	err := json.Unmarshal(bytes, reference)
 	return err
+}
+
+// JSONNewEncoder generate new JSON encoder from writer
+func JSONNewEncoder(w io.Writer) *jsoniter.Encoder {
+	return json.NewEncoder(w)
 }

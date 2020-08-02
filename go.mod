@@ -3,6 +3,7 @@ module github.com/Satssuki/Go-Service-Boilerplate
 go 1.14
 
 require (
+	github.com/Kamva/mgm v1.2.3
 	github.com/Kamva/mgm/v3 v3.0.1
 	github.com/gin-gonic/gin v1.6.3
 	github.com/go-playground/validator/v10 v10.3.0 // indirect

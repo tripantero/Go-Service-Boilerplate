@@ -1,5 +1,7 @@
 cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
+github.com/Kamva/mgm v1.2.3 h1:EokuP5HyjsURC/YyFrarQkMx4IecKq7yz3j2tC6oTcI=
+github.com/Kamva/mgm v1.2.3/go.mod h1:si3Kyg7KypBXHibQh9+UfMouSuu+XhjPlTCfQCZrr6s=
 github.com/Kamva/mgm/v3 v3.0.1 h1:jgWuqhdzUGLpGmbNfHtONY/6ikBs2g0aKlKqvEK/HzI=
 github.com/Kamva/mgm/v3 v3.0.1/go.mod h1:3F9EhA1QeVB6kk8oWZSHVAye/+af8EQBTuZ0gAR/U88=
 github.com/aws/aws-sdk-go v1.29.15 h1:0ms/213murpsujhsnxnNKNeVouW60aJqSd992Ks3mxs=
@@ -144,6 +146,7 @@ github.com/xdg/scram v0.0.0-20180814205039-7eeb5667e42c/go.mod h1:lB8K/P019DLNhe
 github.com/xdg/stringprep v0.0.0-20180714160509-73f8eece6fdc/go.mod h1:Jhud4/sHMO4oL310DaZAKk9ZaJ08SJfe+sJh0HrGL1Y=
 github.com/xdg/stringprep v1.0.0 h1:d9X0esnoa3dFsV0FG35rAT0RIhYFlPq7MiP+DW89La0=
 github.com/xdg/stringprep v1.0.0/go.mod h1:Jhud4/sHMO4oL310DaZAKk9ZaJ08SJfe+sJh0HrGL1Y=
+go.mongodb.org/mongo-driver v1.1.3/go.mod h1:u7ryQJ+DOzQmeO7zB6MHyr8jkEQvC8vH7qLUO4lqsUM=
 go.mongodb.org/mongo-driver v1.3.4/go.mod h1:MSWZXKOynuguX+JSvwP8i+58jYCXxbia8HS3gZBapIE=
 go.mongodb.org/mongo-driver v1.4.0 h1:C8rFn1VF4GVEM/rG+dSoMmlm2pyQ9cs2/oRtUATejRU=
 go.mongodb.org/mongo-driver v1.4.0/go.mod h1:llVBH2pkj9HywK0Dtdt6lDikOjFLbceHVu/Rc0iMKLs=

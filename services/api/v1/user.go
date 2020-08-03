@@ -1,9 +1,8 @@
 package v1
 
 import (
-	"errors"
-
 	"github.com/Satssuki/Go-Service-Boilerplate/models"
+	"github.com/Satssuki/Go-Service-Boilerplate/services/api/validation"
 )
 
 // UserService struct that wrapper the user model api
@@ -18,9 +17,10 @@ func CreateUserService() UserService {
 
 // Insert implementation of function in base interface
 func (user *UserService) Insert() error {
-	if len(user.User.Name) >= 4 && user.User.Age > 0 {
+	err := validation.ValidateUser(&user.User)
+	if err == nil {
 		currentUser := &user.User
 		return currentUser.GetCollection().Create(currentUser)
 	}
-	return errors.New("Model not valid")
+	return err
 }

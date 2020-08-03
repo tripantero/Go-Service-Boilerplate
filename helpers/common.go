@@ -1,10 +1,16 @@
 package helpers
 
-import "os"
+import (
+	"os"
+	"strings"
+)
 
 // GetPORT function to validate the port selection
 func GetPORT() string {
 	port := os.Getenv("PORT")
+	if !strings.Contains(port, ":") {
+		port = ":" + port
+	}
 	if len(port) < 3 {
 		port = ":6007"
 	}

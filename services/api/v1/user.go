@@ -11,6 +11,11 @@ type UserService struct {
 	User models.User
 }
 
+// CreateUserService just a shorthand create object from struct
+func CreateUserService() UserService {
+	return UserService{models.User{}}
+}
+
 // Insert implementation of function in base interface
 func (user *UserService) Insert() error {
 	if len(user.User.Name) >= 4 && user.User.Age > 0 {

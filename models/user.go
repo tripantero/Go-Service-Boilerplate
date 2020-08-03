@@ -11,7 +11,7 @@ type User struct {
 	Age              int    `bson:"age"  json: "age"`
 }
 
-// Collection return the collection of current user model
-func (user *User) Collection() *mgm.Collection {
+// GetCollection return the collection of current user model
+func (user *User) GetCollection() *mgm.Collection {
 	return mgm.Coll(user)
 }

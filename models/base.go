@@ -9,7 +9,7 @@ import (
 
 // BaseModel declare the common action that model can do
 type BaseModel interface {
-	Collection() *mgm.Collection
+	GetCollection() *mgm.Collection
 }
 
 // Connect provides abstraction to get access to MongoDB

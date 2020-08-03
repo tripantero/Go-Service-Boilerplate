@@ -14,7 +14,9 @@ type UserService struct {
 // Insert implementation of function in base interface
 func (user *UserService) Insert() error {
 	if len(user.User.Name) >= 4 && user.User.Age > 0 {
-		return models.Create(user.User)
+		currentUser := &user.User
+		currentUser.GetCollection().Create(currentUser)
+		return nil
 	}
 	return errors.New("Model not valid")
 }

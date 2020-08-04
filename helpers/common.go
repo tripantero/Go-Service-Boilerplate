@@ -27,3 +27,21 @@ func Warn(err error) {
 			Msg(err.Error())
 	}
 }
+
+// Fatal same as Warn but with higher level critical
+func Fatal(err error) {
+	if err != nil {
+		log.
+			Fatal().
+			Msg(err.Error())
+	}
+}
+
+// Error same as Fatal but with lower level critical
+func Error(err error) {
+	if err != nil {
+		log.
+			Error().
+			Msg(err.Error())
+	}
+}

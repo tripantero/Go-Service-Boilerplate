@@ -12,7 +12,14 @@ type BaseModel interface {
 	GetCollection() *mgm.Collection
 }
 
-// Connect provides abstraction to get access to MongoDB
-func Connect() error {
+// SetConfig provides abstraction to get access to MongoDB
+func SetConfig() error {
 	return mgm.SetDefaultConfig(nil, os.Getenv("DBNAME"), options.Client().ApplyURI(os.Getenv("DBURI")))
+}
+
+// DatabasePing ping to database server whether still connected or not
+func DatabasePing() error {
+	client, _ := mgm.NewClient()
+	err := client.Ping(mgm.Ctx(), nil)
+	return err
 }

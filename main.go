@@ -8,12 +8,17 @@ import (
 )
 
 func main() {
-	err := godotenv.Load()
-	helpers.PanicIfErrNotNil(err)
+	helpers.SetupLogger()
 
-	err = models.Connect()
-	helpers.PanicIfErrNotNil(err)
+	err := godotenv.Load()
+	helpers.Warn(err)
+
+	err = models.SetConfig()
+	helpers.Warn(err)
+
+	err = models.DatabasePing()
+	helpers.Error(err)
 
 	err = route.SetupRouter().Run(helpers.GetPORT())
-	helpers.PanicIfErrNotNil(err)
+	helpers.Fatal(err)
 }

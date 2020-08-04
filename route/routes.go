@@ -11,10 +11,13 @@ func SetupRouter() *gin.Engine {
 	router := gin.Default()
 	router.Use(middlewares.AppliAllCORS)
 
-	v1g := router.Group("/api/v1")
+	apig := router.Group("/api")
 	{
-		v1g.Use(middlewares.JSONOnly)
-		v1g.POST("/user", v1.InsertUser)
+		v1g := apig.Group("/v1")
+		{
+			v1g.Use(middlewares.JSONOnly)
+			v1g.POST("/user", v1.InsertUser)
+		}
 	}
 	return router
 }

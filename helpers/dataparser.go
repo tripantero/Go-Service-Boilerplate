@@ -29,3 +29,13 @@ func ReadAllByteFromIO(stream io.ReadCloser) ([]byte, error) {
 	bytes, err := ioutil.ReadAll(stream)
 	return bytes, err
 }
+
+// ReadByteAndParse shorthand function to read file from io
+// and transform it to struct of json
+func ReadByteAndParse(stream io.ReadCloser, reference interface{}) error {
+	bytes, err := ReadAllByteFromIO(stream)
+	if err == nil {
+		err = ByteToStruct(bytes, reference)
+	}
+	return err
+}

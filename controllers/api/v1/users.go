@@ -12,19 +12,18 @@ import (
 // InsertUser sample controller to perform insert user function
 func InsertUser(c *gin.Context) {
 	defer c.Request.Body.Close()
+
 	service := v1s.CreateUserService()
-	bytes, err := helpers.ReadAllByteFromIO(c.Request.Body)
+	err := helpers.ReadByteAndParse(c.Request.Body, &service.User)
+
 	if err == nil {
-		err = helpers.ByteToStruct(bytes, &service.User)
+		err = service.Insert()
 		if err == nil {
-			err = service.Insert()
-			if err == nil {
-				api.JSONResponse(http.StatusOK, c.Writer, gin.H{
-					"status":  "ok",
-					"message": "user defined",
-				})
-				return
-			}
+			api.JSONResponse(http.StatusOK, c.Writer, gin.H{
+				"status":  "ok",
+				"message": "user defined",
+			})
+			return
 		}
 	}
 

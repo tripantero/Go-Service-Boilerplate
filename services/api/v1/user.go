@@ -29,7 +29,7 @@ func (user *UserService) Insert() error {
 			"age":  user.User.Age,
 		})
 		if count > 0 {
-			return errors.New("User already there")
+			err = errors.New("User already there")
 		} else {
 			err = currentUser.GetCollection().Create(currentUser)
 		}

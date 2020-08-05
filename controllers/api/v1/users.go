@@ -18,11 +18,11 @@ func InsertUser(c *gin.Context) {
 	err := helpers.ReadByteAndParse(c.Request.Body, &service.User)
 
 	if err == nil {
-		err = service.Insert()
+		message, err := service.Insert()
 		if err == nil {
 			api.JSONResponse(http.StatusOK, c.Writer, gin.H{
 				"status":  "ok",
-				"message": "user defined",
+				"message": message,
 			})
 			log.
 				Info().

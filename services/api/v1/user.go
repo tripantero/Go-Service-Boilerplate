@@ -1,8 +1,6 @@
 package v1
 
 import (
-	"errors"
-
 	"github.com/Kamva/mgm/v3"
 	"github.com/Satssuki/Go-Service-Boilerplate/models"
 	"github.com/Satssuki/Go-Service-Boilerplate/services/api/validation"
@@ -20,20 +18,23 @@ func CreateUserService() UserService {
 }
 
 // Insert implementation of function in base interface
-func (user *UserService) Insert() error {
+func (user *UserService) Insert() (string, error) {
 	err := validation.ValidateUser(&user.User)
+	var message string = "Users created"
 	if err == nil {
+		_ = err
 		currentUser := &user.User
-		count, err := currentUser.GetCollection().CountDocuments(mgm.Ctx(), bson.M{
+		count, Err := currentUser.GetCollection().CountDocuments(mgm.Ctx(), bson.M{
 			"name": user.User.Name,
 			"age":  user.User.Age,
 		})
+		err = Err
 		if count > 0 {
-			err = errors.New("User already there")
+			err = nil
+			message = "Users already defined"
 		} else {
 			err = currentUser.GetCollection().Create(currentUser)
 		}
-		return err
 	}
-	return err
+	return message, err
 }

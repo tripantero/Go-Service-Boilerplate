@@ -1,6 +1,8 @@
 package v1
 
 import (
+	"errors"
+
 	"github.com/Kamva/mgm/v3"
 	"github.com/Satssuki/Go-Service-Boilerplate/models"
 	"github.com/Satssuki/Go-Service-Boilerplate/services/api/validation"
@@ -30,8 +32,8 @@ func (user *UserService) Insert() (string, error) {
 		})
 		err = Err
 		if count > 0 {
-			err = nil
 			message = "Users already defined"
+			err = errors.New(message)
 		} else {
 			err = currentUser.GetCollection().Create(currentUser)
 		}

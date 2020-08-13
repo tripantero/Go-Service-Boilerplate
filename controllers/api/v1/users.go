@@ -20,7 +20,7 @@ func InsertUser(c *gin.Context) {
 	if err == nil {
 		message, err := service.Insert()
 		if err == nil {
-			api.JSONResponse(http.StatusOK, c.Writer, gin.H{
+			api.JSONResponse(http.StatusCreated, c.Writer, gin.H{
 				"status":  "ok",
 				"message": message,
 			})
@@ -29,6 +29,13 @@ func InsertUser(c *gin.Context) {
 				Msgf("User registered with name: %v", service.User.Name)
 			return
 		} else {
+			if message != "Users created" {
+				api.JSONResponse(http.StatusOK, c.Writer, gin.H{
+					"status":  "ok",
+					"message": message,
+				})
+				return
+			}
 			log.
 				Warn().
 				Str("error", err.Error()).

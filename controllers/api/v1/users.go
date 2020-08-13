@@ -43,6 +43,6 @@ func InsertUser(c *gin.Context) {
 
 	api.JSONResponse(http.StatusBadRequest, c.Writer, gin.H{
 		"status":  "failure",
-		"message": err.Error(),
+		"message": err,
 	})
 }

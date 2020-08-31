@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+    service-server:
+        container_name: service-server
+        image: service-server:1.0
+        ports: 
+            - 6007:6007
+        depends_on:
+            - database
+    database:
+        container_name: mongo-server
+        image: mongo:latest
+        ports: 
+            - 27017:27017
